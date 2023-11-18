@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -22,7 +25,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -40,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -50,20 +53,38 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(Deps.coreKtx)
+    implementation(Deps.lifecycleRuntimeKtx)
+    implementation(Deps.activityCompose)
+    implementation(platform(Deps.composeBom))
+    implementation(Deps.composeUI)
+    implementation(Deps.composeUIGraphics)
+    implementation(Deps.composeUIToolingPreview)
+    implementation(Deps.composeMaterial3)
+    testImplementation(Deps.junit)
+    androidTestImplementation(Deps.junitExt)
+    androidTestImplementation(Deps.espresso)
+    androidTestImplementation(platform(Deps.composeUIGraphics))
+    androidTestImplementation(Deps.composeUIGraphics)
+    debugImplementation(Deps.composeUIGraphics)
+    debugImplementation(Deps.composeUIGraphics)
+    androidTestImplementation(platform(Deps.composeBom))
+    androidTestImplementation(Deps.composeUITestJunit4)
+    debugImplementation(Deps.composeUITooling)
+    debugImplementation(Deps.composeUITestManifest)
+    implementation(Deps.appCompat)
+    implementation(Deps.hiltAndroid)
+    kapt(Deps.hiltCompiler)
+    implementation(Deps.hiltNavigationCompose)
+    implementation(Deps.lifecycleViewModelKts)
+    implementation(Deps.lifecycleViewModelCompose)
+    implementation(Deps.lifecycleRunTimeCompose)
+    implementation(Deps.lifecycleSavedState)
+    implementation(Deps.lifecycleCommon)
+    implementation(Deps.lifecycleService)
+    implementation(Deps.lifecycleProcess)
+    testImplementation(Deps.lifecycleRuntimeTesting)
+}
+kapt {
+    correctErrorTypes = true
 }
