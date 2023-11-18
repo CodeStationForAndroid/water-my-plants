@@ -1,4 +1,4 @@
-package com.abaferastech.watermyplants.navigation
+package com.abaferastech.watermyplants.ui.navigation
 
 import android.annotation.SuppressLint
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -8,13 +8,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.NavController
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.navigation.compose.NavHost
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 val LocalNavController =
     compositionLocalOf<NavHostController> { error("No NavController found!") }

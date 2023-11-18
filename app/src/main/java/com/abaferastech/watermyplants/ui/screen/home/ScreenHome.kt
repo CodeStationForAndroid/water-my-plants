@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.collectAsState
-import com.abaferastech.watermyplants.navigation.NavigationHandler
+import com.abaferastech.watermyplants.ui.navigation.NavigationHandler
 
 
 @Composable

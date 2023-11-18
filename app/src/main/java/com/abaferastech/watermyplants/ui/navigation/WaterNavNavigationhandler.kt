@@ -1,4 +1,4 @@
-package com.abaferastech.watermyplants.navigation
+package com.abaferastech.watermyplants.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
