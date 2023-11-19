@@ -12,5 +12,5 @@ interface PlantApiService {
     suspend fun getPlants() : Flow<List<TodoDto>>
 
     @GET("/species/details/{id}")
-    suspend fun getPlantDetails(@Path("id") id: String): Flow<List<TodoDetailsDto>>
+    suspend fun getPlantDetails(@Path("id") id: String): Flow<TodoDetailsDto>
 }

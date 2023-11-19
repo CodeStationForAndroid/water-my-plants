@@ -3,6 +3,9 @@ package com.abaferastech.watermyplants.di
 import com.abaferastech.watermyplants.data.remote.PlantApiService
 import com.abaferastech.watermyplants.data.remote.PlantApiClientImpl
 import com.abaferastech.watermyplants.domain.PlantApiClient
+import com.abaferastech.watermyplants.domain.use_case.PlantUseCase
+import com.abaferastech.watermyplants.domain.use_case.UseCaseGetAllPlants
+import com.abaferastech.watermyplants.domain.use_case.UseCaseGetPlantDetails
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,15 +21,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "https://perenual.com/api/"
+    private const val BASE_URL = "https://perenual.com/api"
     private const val PLANT_API_KEY = "sk-13ed6551ab16cddbb2938"
+
     @Provides
     @Singleton
-    fun providesPlantApi() : PlantApiService {
+    fun providesPlantApi(): PlantApiService {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val originalRequest = chain.request()
-                val newUrl = originalRequest.url().newBuilder().addQueryParameter("key", PLANT_API_KEY).build()
+                val newUrl =
+                    originalRequest.url().newBuilder().addQueryParameter("key", PLANT_API_KEY)
+                        .build()
                 val newRequest = originalRequest.newBuilder().url(newUrl).build()
                 chain.proceed(newRequest)
             }.connectTimeout(60, TimeUnit.SECONDS)
@@ -42,6 +48,14 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesPlantRemoteRepository(plantApiService: PlantApiService) : PlantApiClient = PlantApiClientImpl(plantApiService)
+    fun providesPlantRemoteRepository(plantApiService: PlantApiService): PlantApiClient =
+        PlantApiClientImpl(plantApiService)
 
+
+    @Provides
+    fun providePlantUseCase(plantApiClient: PlantApiClient) =
+        PlantUseCase(
+            useCaseGetAllPlants = UseCaseGetAllPlants(plantApiClient),
+            useCaseGetPlantDetails = UseCaseGetPlantDetails(plantApiClient)
+        )
 }
