@@ -26,7 +26,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesPlantApi(): PlantApiService {
+    fun providesRetrofit(): Retrofit {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val originalRequest = chain.request()
@@ -43,8 +43,13 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-            .create(PlantApiService::class.java)
     }
+
+
+    @Provides
+    @Singleton
+    fun providesPlantApi(retrofit: Retrofit): PlantApiService =
+        retrofit.create(PlantApiService::class.java)
 
     @Provides
     @Singleton
@@ -53,9 +58,10 @@ object NetworkModule {
 
 
     @Provides
-    fun providePlantUseCase(plantApiClient: PlantApiClient) =
+    fun providePlantUseCase(plantApiClient: PlantApiClient): PlantUseCase =
         PlantUseCase(
             useCaseGetAllPlants = UseCaseGetAllPlants(plantApiClient),
             useCaseGetPlantDetails = UseCaseGetPlantDetails(plantApiClient)
         )
+
 }
