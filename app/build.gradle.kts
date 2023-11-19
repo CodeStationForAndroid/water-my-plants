@@ -76,6 +76,8 @@ dependencies {
     implementation(Deps.hiltAndroid)
     kapt(Deps.hiltCompiler)
     implementation(Deps.hiltNavigationCompose)
+    implementation(Deps.retrofit)
+    implementation(Deps.retrofitConvertoer)
     implementation(Deps.lifecycleViewModelKts)
     implementation(Deps.lifecycleViewModelCompose)
     implementation(Deps.lifecycleRunTimeCompose)
