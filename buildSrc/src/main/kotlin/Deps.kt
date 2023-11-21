@@ -55,6 +55,10 @@ object Deps {
     val composeFoundation = "androidx.compose.foundation:foundation"
     val composeMaterialIconsCore = "androidx.compose.material:material-icons-core"
     val composeMaterialIconsExtended = "androidx.compose.material:material-icons-extended"
+
+    //Coroutine test
+    val coroutineArchTest = "androidx.arch.core:core-testing:2.2.0"
+    val coroutineArchAndroidTest = "androidx.arch.core:core-testing:2.2.0"
     // Lifecycle
     private const val lifecycleVersion = "2.6.1"
     val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"

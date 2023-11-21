@@ -11,6 +11,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -27,15 +28,20 @@ object NetworkModule {
     @Provides
     @Singleton
     fun providesRetrofit(): Retrofit {
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val originalRequest = chain.request()
                 val newUrl =
-                    originalRequest.url().newBuilder().addQueryParameter("key", PLANT_API_KEY)
+                    originalRequest.url.newBuilder().addQueryParameter("key", PLANT_API_KEY)
                         .build()
                 val newRequest = originalRequest.newBuilder().url(newUrl).build()
                 chain.proceed(newRequest)
-            }.connectTimeout(60, TimeUnit.SECONDS)
+            }
+            .addInterceptor(logging)
+            .connectTimeout(60, TimeUnit.SECONDS)
             .build()
 
         return Retrofit.Builder()

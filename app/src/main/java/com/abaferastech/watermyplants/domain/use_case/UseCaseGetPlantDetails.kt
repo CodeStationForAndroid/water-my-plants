@@ -6,7 +6,7 @@ import com.abaferastech.watermyplants.domain.model.TodoDetails
 import kotlinx.coroutines.flow.Flow
 
 class UseCaseGetPlantDetails(private val plantApiClient: PlantApiClient){
-    suspend operator fun invoke(id: String): ApiResponse<Flow<TodoDetails>> {
+    suspend operator fun invoke(id: String): Flow<ApiResponse<TodoDetails>> {
         return plantApiClient.getPlantsDetails(id)
     }
 
