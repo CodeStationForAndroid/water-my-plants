@@ -1,7 +1,12 @@
 package com.abaferastech.watermyplants.di
 
+import android.app.Application
+import androidx.room.Room
+import com.abaferastech.watermyplants.data.local.PlantDatabase
+import com.abaferastech.watermyplants.data.local.LocalRepositoryImpl
 import com.abaferastech.watermyplants.data.remote.PlantApiService
 import com.abaferastech.watermyplants.data.remote.PlantApiClientImpl
+import com.abaferastech.watermyplants.data.local.LocalRepository
 import com.abaferastech.watermyplants.domain.PlantApiClient
 import com.abaferastech.watermyplants.domain.use_case.PlantUseCase
 import com.abaferastech.watermyplants.domain.use_case.UseCaseGetAllPlants
@@ -11,7 +16,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -25,12 +29,10 @@ object NetworkModule {
     private const val BASE_URL = "https://perenual.com/api"
     private const val PLANT_API_KEY = "sk-13ed6551ab16cddbb2938"
 
+
     @Provides
     @Singleton
     fun providesRetrofit(): Retrofit {
-        val logging = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val originalRequest = chain.request()
@@ -39,9 +41,7 @@ object NetworkModule {
                         .build()
                 val newRequest = originalRequest.newBuilder().url(newUrl).build()
                 chain.proceed(newRequest)
-            }
-            .addInterceptor(logging)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            }.connectTimeout(60, TimeUnit.SECONDS)
             .build()
 
         return Retrofit.Builder()

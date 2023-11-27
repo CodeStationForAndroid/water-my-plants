@@ -32,6 +32,7 @@ object Deps {
     val playServicesAuth = "com.google.android.gms:play-services-auth:20.6.0"
     //esspresso
     val espresso = "androidx.test.espresso:espresso-core:3.5.1"
+    val truth = "com.google.truth:truth:1.0.1"
     // WorkManager
     private const val workVersion = "2.8.1"
     val workRuntimeKtx = "androidx.work:work-runtime-ktx:$workVersion"
@@ -43,7 +44,7 @@ object Deps {
     val material = "com.google.android.material:material:1.9.0"
     val constraintLayoutCompose = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     // Compose
-    val composeBom = "androidx.compose:compose-bom:2023.03.00"
+    val composeBom = "androidx.compose:compose-bom:2023.10.01"
     val composeUI = "androidx.compose.ui:ui"
     val composeUIGraphics = "androidx.compose.ui:ui-graphics"
     val composeUIToolingPreview = "androidx.compose.ui:ui-tooling-preview"
@@ -91,4 +92,7 @@ object Deps {
     val okhttp3Logging = "com.squareup.okhttp3:logging-interceptor:4.11.0"
     val okhttp3 = "com.squareup.okhttp3:okhttp:4.11.0"
     val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+    //Datepicker
+    val datePicker = "com.marosseleng.android:compose-material3-datetime-pickers:0.6.0"
+
 }

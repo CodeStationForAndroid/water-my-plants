@@ -8,13 +8,12 @@ import javax.inject.Inject
 @HiltViewModel
 class ViewModelScreenHome @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    /*TODO Add you use cases*/
 ) : BaseViewModel<HomeUiState, HomeScreenUiEffect>(HomeUiState()), HomeScreenInteraction {
 
     private val args: HomeScreenArgs = HomeScreenArgs(savedStateHandle = savedStateHandle)
 
     init {
-        getData()
+
     }
 
     override fun onClickBack() {
@@ -22,6 +21,7 @@ class ViewModelScreenHome @Inject constructor(
     }
 
     override fun getData() {
-        TODO("Not yet implemented")
+
     }
+
 }
