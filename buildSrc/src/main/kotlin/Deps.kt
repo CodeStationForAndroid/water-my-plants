@@ -1,4 +1,5 @@
 object Deps {
+
     val kotlinxCourotines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     val activityCompose = "androidx.activity:activity-compose:1.8.1"
     val coreKtx = "androidx.core:core-ktx:1.10.1"
@@ -83,6 +84,7 @@ object Deps {
     val roomKtx = "androidx.room:room-ktx:$roomVersion"
     val roomTesting = "androidx.room:room-testing:$roomVersion"
     val roomPaging = "androidx.room:room-paging:$roomVersion"
+    val roomCommom = "androidx.room:room-common:$roomVersion"
     //datastore
     val dataStore = "androidx.datastore:datastore-preferences:1.0.0"
     val dataStoreCore = "androidx.datastore:datastore-core:1.0.0"
@@ -92,6 +94,7 @@ object Deps {
     val okhttp3Logging = "com.squareup.okhttp3:logging-interceptor:4.11.0"
     val okhttp3 = "com.squareup.okhttp3:okhttp:4.11.0"
     val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+    val mockWebServer = "com.squareup.okhttp3:mockwebserver:4.11.0"
     //Datepicker
     val datePicker = "com.marosseleng.android:compose-material3-datetime-pickers:0.6.0"
 

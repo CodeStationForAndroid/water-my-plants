@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class SpeciesListDto(
     val current_page: Int,
     @SerializedName("data")
-    val speciesList: List<SpecieDto>,
+    var speciesList: List<SpecieDto>,
     val from: Int,
     val last_page: Int,
     val per_page: Int,

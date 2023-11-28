@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.abaferastech.watermyplants"
-        minSdk = 27
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -57,17 +57,16 @@ dependencies {
     implementation(Deps.lifecycleRuntimeKtx)
     implementation(Deps.activityCompose)
     implementation(platform(Deps.composeBom))
-    implementation(Deps.composeUI)
-    implementation(Deps.composeUIGraphics)
+//    implementation(Deps.composeUI)
+//    implementation(Deps.composeUIGraphics)
     implementation(Deps.composeUIToolingPreview)
     implementation(Deps.composeMaterial3)
     testImplementation(Deps.junit)
     androidTestImplementation(Deps.junitExt)
     androidTestImplementation(Deps.espresso)
-    androidTestImplementation(platform(Deps.composeUIGraphics))
-    androidTestImplementation(Deps.composeUIGraphics)
-    debugImplementation(Deps.composeUIGraphics)
-    debugImplementation(Deps.composeUIGraphics)
+//    androidTestImplementation(platform(Deps.composeUIGraphics))
+//    androidTestImplementation(Deps.composeUIGraphics)
+//    debugImplementation(Deps.composeUIGraphics)
     androidTestImplementation(platform(Deps.composeBom))
     androidTestImplementation(Deps.composeUITestJunit4)
     debugImplementation(Deps.composeUITooling)
@@ -76,9 +75,10 @@ dependencies {
     implementation(Deps.hiltAndroid)
     kapt(Deps.hiltCompiler)
     implementation(Deps.hiltNavigationCompose)
-    implementation(Deps.coilCompose)
     implementation(Deps.retrofit)
     implementation(Deps.retrofitConvertoer)
+    implementation(Deps.okhttp3Logging)
+    androidTestImplementation(Deps.mockWebServer)
     implementation(Deps.lifecycleViewModelKts)
     implementation(Deps.lifecycleViewModelCompose)
     implementation(Deps.lifecycleRunTimeCompose)
@@ -88,18 +88,16 @@ dependencies {
     implementation(Deps.lifecycleProcess)
     testImplementation(Deps.lifecycleRuntimeTesting)
     implementation(Deps.datePicker)
+    implementation(Deps.roomKtx)
+    implementation(Deps.roomRuntime)
+    implementation(Deps.roomTesting)
+    implementation(Deps.roomCommom)
+    kapt(Deps.roomCompilerKapt)
 
 
-    val room_version = "2.6.0"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    testImplementation("androidx.room:room-testing:$room_version")
-    implementation("androidx.room:room-paging:$room_version")
 
-    implementation("androidx.compose.material:material-icons-extended:1.5.4")
-    val cameraxVersion = "1.4.0-alpha02"
+    implementation("androidx.compose.material:material-icons-extended:1.5.1")
+    val cameraxVersion = "1.3.0-rc01"
 
     implementation("androidx.camera:camera-core:$cameraxVersion")
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
