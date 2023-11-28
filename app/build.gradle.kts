@@ -61,7 +61,6 @@ dependencies {
     implementation(Deps.composeUIGraphics)
     implementation(Deps.composeUIToolingPreview)
     implementation(Deps.composeMaterial3)
-    implementation("androidx.room:room-ktx:2.6.0")
     testImplementation(Deps.junit)
     androidTestImplementation(Deps.junitExt)
     androidTestImplementation(Deps.espresso)
@@ -91,9 +90,16 @@ dependencies {
     implementation(Deps.datePicker)
 
 
+    val room_version = "2.6.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    testImplementation("androidx.room:room-testing:$room_version")
+    implementation("androidx.room:room-paging:$room_version")
 
-    implementation("androidx.compose.material:material-icons-extended:1.5.1")
-    val cameraxVersion = "1.3.0-rc01"
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
+    val cameraxVersion = "1.4.0-alpha02"
 
     implementation("androidx.camera:camera-core:$cameraxVersion")
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
