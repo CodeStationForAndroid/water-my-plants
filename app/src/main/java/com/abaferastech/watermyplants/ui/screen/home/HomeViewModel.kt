@@ -2,8 +2,8 @@ package com.abaferastech.watermyplants.ui.screen.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abaferastech.watermyplants.data.local.Plant
 import com.abaferastech.watermyplants.data.local.LocalRepository
+import com.abaferastech.watermyplants.data.local.Plant
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,21 +13,16 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class HomeState(
-    var plants: List<Plant> = emptyList(),
-)
-
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repository: LocalRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(HomeState())
+    private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeState> = _uiState.asStateFlow()
 
 
     init {
-
             loadPlants()
     }
 
