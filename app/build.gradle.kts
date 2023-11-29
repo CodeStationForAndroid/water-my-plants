@@ -61,6 +61,7 @@ dependencies {
 //    implementation(Deps.composeUIGraphics)
     implementation(Deps.composeUIToolingPreview)
     implementation(Deps.composeMaterial3)
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     testImplementation(Deps.junit)
     androidTestImplementation(Deps.junitExt)
     androidTestImplementation(Deps.espresso)

@@ -22,7 +22,7 @@ fun WaterNavNavGraph() {
             AddScreen(navController = navController)
         }
         composable(route = Screens.CameraScreen.route){
-            Camera()
+            Camera(navController = navController)
         }
 
     }

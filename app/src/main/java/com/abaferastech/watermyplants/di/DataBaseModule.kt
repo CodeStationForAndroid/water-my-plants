@@ -22,7 +22,8 @@ object DataBaseModule {
     fun provideLocalDatabase(@ApplicationContext context: Context): PlantDatabase {
         return Room.databaseBuilder(
             context, PlantDatabase::class.java, name = "PLANT_DATABASE"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton

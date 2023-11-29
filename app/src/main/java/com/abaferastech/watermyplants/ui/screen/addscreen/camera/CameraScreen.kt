@@ -37,12 +37,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Camera(){
+fun Camera(
+    navController: NavController
+){
 
     val context = LocalContext.current
     fun takePhoto(
@@ -96,7 +99,8 @@ fun Camera(){
         sheetContent = {
             PhotoBottomSheetContent(
                 bitmaps = bitmaps,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                navController = navController
             )
         }
     ){ padding ->

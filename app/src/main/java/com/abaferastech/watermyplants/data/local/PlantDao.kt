@@ -14,7 +14,7 @@ interface PlantDao {
     @Query("SELECT * FROM plant")
     fun getPlants(): Flow<List<Plant>>
 
-    @Query("SELECT id, name, color, isWatered FROM plant WHERE id = :id")
+    @Query("SELECT * FROM plant WHERE id = :id")
     fun getPlantById(id: Int): Plant?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

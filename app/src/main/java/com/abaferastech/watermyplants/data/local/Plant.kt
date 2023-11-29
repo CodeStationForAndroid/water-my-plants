@@ -1,5 +1,6 @@
 package com.abaferastech.watermyplants.data.local
 
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.abaferastech.watermyplants.ui.theme.BabyBlue
@@ -7,6 +8,7 @@ import com.abaferastech.watermyplants.ui.theme.LightGreen
 import com.abaferastech.watermyplants.ui.theme.RedOrange
 import com.abaferastech.watermyplants.ui.theme.RedPink
 import com.abaferastech.watermyplants.ui.theme.Violet
+import java.time.LocalDate
 
 @Entity
 data class Plant(
@@ -15,8 +17,8 @@ data class Plant(
     var isWatered: Boolean,
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    //    val image: Image,
-//    val dateToWater: LocalDate,
+    val image: String,
+    val dateToWater: LocalDate,
 //    val scienticName: String,
 //    val watering: String,
 //    val wateringFrequency: String,

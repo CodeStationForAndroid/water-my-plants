@@ -1,5 +1,7 @@
 package com.abaferastech.watermyplants.ui.screen.home.components
 
+import android.graphics.BitmapFactory
+import android.util.Base64
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,11 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abaferastech.watermyplants.data.local.Plant
+
 
 
 @Composable
@@ -45,13 +50,13 @@ fun PlantListItem(
         {
 
             Box(contentAlignment = Alignment.Center) {
-                image?.let { painterResource(id = it) }?.let {
+                val imageBytes = Base64.decode(plant.image, Base64.DEFAULT)
+                val pic = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
                     Image(
-                        painter = it,
-                        contentDescription = "image",
-                        modifier = Modifier.size(40.dp)
+                        modifier = Modifier.size(40.dp),
+                        bitmap = pic.asImageBitmap(),
+                        contentDescription = null
                     )
-                }
             }
 
             Column(
