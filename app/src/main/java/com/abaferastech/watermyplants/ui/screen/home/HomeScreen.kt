@@ -49,6 +49,7 @@ fun HomeScreen(
             items(state.plants){ plant ->
                 PlantListItem(
                     plant = plant,
+                    navController = navController,
                     modifier = Modifier.fillMaxWidth()
                 )
             }
