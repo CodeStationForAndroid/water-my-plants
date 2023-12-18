@@ -91,8 +91,8 @@ dependencies {
     implementation(Deps.datePicker)
     implementation(Deps.roomKtx)
     implementation(Deps.roomRuntime)
-    implementation(Deps.roomTesting)
-    implementation(Deps.roomCommom)
+    androidTestImplementation(Deps.roomTesting)
+    implementation(Deps.kotlinxCourotines)
     kapt(Deps.roomCompilerKapt)
 
 

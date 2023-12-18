@@ -1,6 +1,8 @@
 object Deps {
 
     val kotlinxCourotines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+    val kotlinxCourotinesCore = "org.jetbrains.kotlinx:kotlinx-core:1.7.3"
+
     val activityCompose = "androidx.activity:activity-compose:1.8.1"
     val coreKtx = "androidx.core:core-ktx:1.10.1"
     val junit = "junit:junit:4.13.2"

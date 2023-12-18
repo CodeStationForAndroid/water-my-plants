@@ -3,20 +3,20 @@ package com.abaferastech.watermyplants.watermyplantstesting.data.local
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SmallTest
+import androidx.test.filters.MediumTest
+import com.abaferastech.watermyplants.data.local.Plant
 import com.abaferastech.watermyplants.data.local.PlantDao
 import com.abaferastech.watermyplants.data.local.PlantDatabase
-import com.abaferastech.watermyplants.data.local.Plant
 import junit.framework.TestCase.assertEquals
-import org.junit.Assert.*
 import kotlinx.coroutines.runBlocking
 import org.junit.After
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-@SmallTest
+@MediumTest
 class PlantDaoTest {
 
     private lateinit var database: PlantDatabase

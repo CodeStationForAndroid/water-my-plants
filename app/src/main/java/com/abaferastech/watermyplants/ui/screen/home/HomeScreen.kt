@@ -13,11 +13,11 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.abaferastech.watermyplants.ui.navigation.Screens
 import com.abaferastech.watermyplants.ui.screen.home.components.PlantListItem
@@ -27,7 +27,8 @@ fun HomeScreen(
     navController: NavController,
     vm: HomeViewModel = hiltViewModel()
 ){
-    val state by vm.uiState.collectAsState()
+    val state by vm.uiState.collectAsStateWithLifecycle()
+
 
     Scaffold(
         floatingActionButton = {
@@ -49,8 +50,12 @@ fun HomeScreen(
             items(state.plants){ plant ->
                 PlantListItem(
                     plant = plant,
-                    navController = navController,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        navController.navigate(
+                            Screens.DetailScreen.route + "?plantId=${plant.id}"
+                        )
+                    }
                 )
             }
 

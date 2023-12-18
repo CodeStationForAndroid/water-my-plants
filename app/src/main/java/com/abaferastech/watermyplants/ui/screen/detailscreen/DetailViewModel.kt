@@ -1,13 +1,11 @@
 package com.abaferastech.watermyplants.ui.screen.detailscreen
 
-import android.graphics.Color
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abaferastech.watermyplants.data.local.LocalRepository
 import com.abaferastech.watermyplants.data.local.Plant
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,7 +30,7 @@ class DetailViewModel@Inject constructor(
     init {
         savedStateHandle.get<Int>("plantId")?.let { plantId ->
             if(plantId != -1) {
-                CoroutineScope(Dispatchers.IO).launch {
+                viewModelScope.launch(Dispatchers.IO) {
                     repository.getPlantEntityById(plantId)?.also { plant ->
                         currentPlantId = plant.id
                         _uiState.value = uiState.value.copy(
